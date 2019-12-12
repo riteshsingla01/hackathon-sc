@@ -7,14 +7,14 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build
 WORKDIR /src
 COPY constituentsearch.sln ./
 COPY AlsacWebApiCore/*.csproj ./AlsacWebApiCore/
-COPY constituentsearch/*.csproj ./constituentsearch/
+COPY ConstituentSearch/*.csproj ./ConstituentSearch/
 
 RUN dotnet restore
 COPY . .
 WORKDIR /src/AlsacWebApiCore
 RUN dotnet build -c Release -o /app
 
-WORKDIR /src/constituentsearch
+WORKDIR /src/ConstituentSearch
 RUN dotnet build -c Release -o /app
 
 FROM build AS publish
@@ -23,4 +23,4 @@ RUN dotnet publish -c Release -o /app
 FROM build AS final
 WORKDIR /app
 COPY --from=build-env /app .
-ENTRYPOINT ["dotnet", "constituentsearch.dll"]
+ENTRYPOINT ["dotnet", "ConstituentSearch.dll"]
