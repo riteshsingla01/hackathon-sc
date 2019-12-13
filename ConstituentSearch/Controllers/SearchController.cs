@@ -30,7 +30,7 @@ namespace ConstituentSearch.Controllers
         {
             var result = await _searchService.FindMatchesAsync(searchData);
 
-            if (result == null)
+            if (result == null || result.Matches.Count == 0)
                 return NotFound("No matches found");
 
             return Ok(result);

@@ -13,11 +13,6 @@
             </remarks>
             <returns>The SearchReponseDto data matching zipCode passed in</returns>
         </member>
-        <member name="P:ConstituentSearch.DTOs.SearchRequestDto.Zip">
-            <summary>
-            Gets or sets Zip code used for look up
-            </summary>
-        </member>
         <member name="P:ConstituentSearch.DTOs.SearchResponseItemDto.Zip">
             <summary>
             Gets or sets Zip code used for look up
