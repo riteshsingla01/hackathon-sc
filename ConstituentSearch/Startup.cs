@@ -29,16 +29,15 @@ namespace ConstituentSearch
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // TODO: Uncomment this if you need CORS, otherwise delete it
-            //services.AddCors(
-            //        options => options.AddPolicy("Everything",
-            //            builder => builder.AllowAnyOrigin()
-            //                .AllowAnyMethod()
-            //                .AllowAnyHeader()
-            //                .AllowCredentials()
-            //        )
-            //    )
-            //    .AddResponseCaching();
+            services.AddCors(
+                    options => options.AddPolicy("Everything",
+                        builder => builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials()
+                    )
+                )
+                .AddResponseCaching();
 
             services.AddMvc();
 
@@ -72,8 +71,7 @@ namespace ConstituentSearch
                 app.UseMiddleware<StackifyMiddleware.RequestTracerMiddleware>();
             }
 
-            // TODO: Uncomment this if you need CORS, otherwise delete it
-            // app.UseCors("Everything");
+            app.UseCors("Everything");
 
             app.UseMvc();
 
